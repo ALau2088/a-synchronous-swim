@@ -1,4 +1,4 @@
-(function() {
+// (function() {
 
   const serverUrl = 'http://127.0.0.1:3000';
 
@@ -7,17 +7,35 @@
   //
 
   /////////////////////////////////////////////////////////////////////
-  // The ajax file uplaoder is provided for your convenience!
+  // The ajax file uploader is provided for your convenience!
   // Note: remember to fix the URL below.
   /////////////////////////////////////////////////////////////////////
+const pressAButton=(callback)=> {
+    $.ajax({
+      type: 'GET',
+      // data: data,
+      url: serverUrl,
+      cache: false,
+      contentType: false,
+      processData: false,
+      success: (queData) => {
+        console.log("this was succesful")
+        console.log(queData)
+         callback(queData)
+        return "this was succesful";
+      }
+    });
+}
 
-  const ajaxFileUplaod = (file) => {
+
+
+const ajaxFileUpload = (file) => {
     var formData = new FormData();
     formData.append('file', file);
     $.ajax({
       type: 'POST',
       data: formData,
-      url: 'FILL_ME_IN',
+      url: serverUrl,
       cache: false,
       contentType: false,
       processData: false,
@@ -46,4 +64,4 @@
     ajaxFileUplaod(file);
   });
 
-})();
+// })();
