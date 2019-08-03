@@ -6,8 +6,8 @@ $('body').on('keydown', (event) => {
   }
   var Ajax=event.key.match(/a/)
   if (Ajax) {
-    console.log("the Ajax variable is working")
-    pressAButton()
+    pressAButton(SwimTeam.move)
+
   }
 
 });

@@ -19,7 +19,6 @@ const pressAButton=(callback)=> {
       contentType: false,
       processData: false,
       success: (queData) => {
-        console.log("this was succesful")
         console.log(queData)
          callback(queData)
         return "this was succesful";

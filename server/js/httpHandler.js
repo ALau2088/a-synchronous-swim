@@ -16,7 +16,7 @@ module.exports.router = (req, res, next = ()=>{}) => {
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
   if (req.method === "GET") {
     res.writeHead(200, headers);
-    var directions = ['Up', 'Down', 'Left', 'Right']
+    var directions = ['up', 'down', 'left', 'right']
     var randomDirection = directions[Math.floor(Math.random()*3)];
     res.write(randomDirection)
     //res._data="up"
