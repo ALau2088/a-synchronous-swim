@@ -12,19 +12,14 @@ module.exports.initialize = (queue) => {
   messageQueue = queue;
 };
 
-// module.exports.sendHello(req, res, next=()=>{}) => {
-//   console.log("expect to send hello from sendHello method to" + req.url)
-
-//   //send a return of hello back to client
-//   res.end();
-// };
-
-
 module.exports.router = (req, res, next = ()=>{}) => {
   console.log('Serving request type ' + req.method + ' for url ' + req.url);
   if (req.method === "GET") {
     res.writeHead(200, headers);
-    res._data="up";
+    var directions = ['Up', 'Down', 'Left', 'Right']
+    var randomDirection = directions[Math.floor(Math.random()*3)];
+    res.write(randomDirection)
+    //res._data="up"
     res.end();
   } else if (req.method === "OPTIONS") {
     res.writeHead(200, headers);
