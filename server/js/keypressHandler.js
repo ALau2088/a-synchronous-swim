@@ -1,5 +1,8 @@
 const _ = require('underscore');
 const keypress = require('keypress');
+//import message queue
+const messageQueue = require ('./messageQueue.js')
+
 
 ///////////////////////////////////////////////////////////////////////////////
 // Utility Function ///////////////////////////////////////////////////////////
@@ -40,13 +43,14 @@ module.exports.initialize = (callback) => {
       callback(key.name);
       return; // don't do any more processing on this key
     }
-    
+
     // otherwise build up a message from individual characters
     if (key && (key.name === 'return' || key.name === 'enter')) {
       // on enter, process the message
       logKeypress('\n');
       if (message.length > 0) {
         callback(message);
+        messageQueue.enqueue(message);
         message = ''; // clear the buffer where we are collecting keystrokes
       }
     } else {
